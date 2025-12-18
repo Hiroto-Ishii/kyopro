@@ -1,3 +1,10 @@
 /.vscode
 /practice
 /practice2
+# C++ compiled binaries
+a.out
+A
+B
+C
+D
+*.exe
