@@ -2,6 +2,8 @@
 using namespace std;
 using ll = long long;
 
+// 提出コード
+/*
 int main()
 {
     int n, q;
@@ -40,6 +42,44 @@ int main()
             l--;
             r--;
             ll ans = sum[r] - sum[l] + a[l]; // sumの要素数がｎで0から始まる奴なら、もっときれいに行けた。
+            cout << ans << "\n";
+        }
+    }
+}
+*/
+
+// 理想コード
+int main()
+{
+    int n, q;
+    cin >> n >> q;
+    vector<ll> a(n);
+    vector<ll> sum(n + 1, 0);
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        sum[i + 1] = sum[i] + a[i];
+    }
+
+    for (int i = 0; i < q; i++)
+    {
+        int q1;
+        cin >> q1;
+        if (q1 == 1)
+        {
+            int x;
+            cin >> x;
+            x--;
+            swap(a[x], a[x + 1]);
+            sum[x + 1] = sum[x] + a[x];
+        }
+        else
+        {
+            int l, r;
+            cin >> l >> r;
+            l--;
+            ll ans = sum[r] - sum[l];
             cout << ans << "\n";
         }
     }
