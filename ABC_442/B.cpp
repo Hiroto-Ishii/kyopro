@@ -19,7 +19,7 @@ int main()
         }
         else if (a == 2)
         {
-            if (vol != 0)
+            if (vol != 0) // これでもいいけど、max(0,vol-1)でもいい
                 vol--;
         }
         else

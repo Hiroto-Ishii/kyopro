@@ -7,14 +7,14 @@ int main()
     int n, q;
     cin >> n >> q;
     vector<ll> a(n);
-    vector<ll> sum(n);
+    vector<ll> sum(n); // これ要素数ｎでよかった。0から始まってほしいから。
 
     ll a_sum = 0;
 
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        a_sum += a[i];
+        a_sum += a[i]; // a_sumいらなかった。sum[i] = sum[i-1] + a[i] でいい
         sum[i] = a_sum;
     }
 
@@ -30,7 +30,7 @@ int main()
             int tmp;
             tmp = a[x];
             a[x] = a[x + 1];
-            a[x + 1] = tmp;
+            a[x + 1] = tmp; // swap(a[x], a[x+1])で入れ替え可能
             sum[x] += a[x] - a[x + 1];
         }
         else
@@ -39,7 +39,7 @@ int main()
             cin >> l >> r;
             l--;
             r--;
-            ll ans = sum[r] - sum[l] + a[l];
+            ll ans = sum[r] - sum[l] + a[l]; // sumの要素数がｎで0から始まる奴なら、もっときれいに行けた。
             cout << ans << "\n";
         }
     }
