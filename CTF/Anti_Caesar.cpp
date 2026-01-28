@@ -8,12 +8,12 @@ int main()
     string s;
     cin >> s;
     int zure = 3;
-    rep(i, s.size())
+    rep(i, (int)s.size())
     {
-        if (s[i] - 'a' >= 0 && s[i] - 'a' <= 25)        // 小文字の場合
+        if (islower(s[i]))                              // 小文字の場合
             s[i] = (s[i] - 'a' - zure + 26) % 26 + 'a'; // ずれを引いたときマイナスにならないようにした
 
-        else if (s[i] - 'A' >= 0 && s[i] - 'A' <= 25) // 大文字の場合
+        else if (isupper(s[i])) // 大文字の場合
             s[i] = (s[i] - 'A' - zure + 26) % 26 + 'A';
     }
     cout << s << endl;
