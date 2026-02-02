@@ -18,7 +18,7 @@ const int ddx[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
 const int inf = 1 << 30;
 const ll INF = 1LL << 62;
 // clang-format on
-
+/*
 int main() {
   int t;
   cin >> t;
@@ -53,5 +53,39 @@ int main() {
     cout << ans << "\n";
   }
 }
+*/
 // R_i = min(R_i,R_i-1 + 1)を頭から
 // R_i = min(R_i,R_i+1 + 1)をお尻から
+
+// 正解コード
+int main() {
+  int t;
+  cin >> t;
+  while (t--) {
+    int n;
+    cin >> n;
+    vector<int> r(n);
+    for (int& v : r) cin >> v;
+    priority_queue<pli, vector<pli>, greater<pli>>
+        pq;  // {a[i], i} のペアを a[i] の昇順で持つ
+    for (int i = 0; i < n; i++) pq.push({r[i], i});
+    vector<int> a = r;
+    while (!pq.empty()) {
+      const auto [ai, i] = pq.top();
+      pq.pop();
+      if (a[i] != ai)
+        continue;  // 優先度付きキューに残っている古い情報が取り出された場合すぐに捨てる
+      if (i != 0 && a[i - 1] > a[i] + 1) {
+        a[i - 1] = a[i] + 1;
+        pq.push({a[i - 1], i - 1});
+      }
+      if (i != n - 1 && a[i + 1] > a[i] + 1) {
+        a[i + 1] = a[i] + 1;
+        pq.push({a[i + 1], i + 1});
+      }
+    }
+    long ans = 0;
+    for (int i = 0; i < n; i++) ans += r[i] - a[i];
+    cout << ans << '\n';
+  }
+}
