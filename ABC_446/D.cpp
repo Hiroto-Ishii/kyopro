@@ -20,40 +20,32 @@ const int inf = 1 << 30;
 const ll INF = 1LL << 62;
 // clang-format on
 
-int main()
-{
-    int n;
-    cin >> n;
-    vector<pll> a;
-    int a_size = 0;
+int main() {
+  int n;
+  cin >> n;
+  vector<pll> a;
+  int a_size = 0;
 
-    rep(i, n)
-    {
-        ll x;
-        cin >> x;
-        int ok = 0;
+  rep(i, n) {
+    ll x;
+    cin >> x;
+    int ok = 0;
 
-        rep(ii, a_size)
-        {
-            if (a[ii].first + a[ii].second + 1 == x)
-            {
-                a[ii].second++;
-                ok++;
-                break;
-            }
-        }
-        if (ok == 0)
-        {
-            a.push_back({x, 0});
-            a_size++;
-        }
+    rep(ii, a_size) {
+      if (a[ii].first + a[ii].second + 1 == x) {
+        a[ii].second++;
+        ok++;
+        break;
+      }
     }
-    ll ans = 0;
-    rep(i, a_size)
-    {
-        ans = max(ans, a[i].second);
+    if (ok == 0) {
+      a.push_back({x, 0});
+      a_size++;
     }
-    cout << ans + 1 << endl;
+  }
+  ll ans = 0;
+  rep(i, a_size) { ans = max(ans, a[i].second); }
+  cout << ans + 1 << endl;
 }
 // 部分列の数だけ要素を保持するやり方だとTLEする。
 // 数字のmapをつくって、それぞれに部分列の何番目かを保持するやり方でAC
