@@ -20,31 +20,25 @@ const int inf = 1 << 30;
 const ll INF = 1LL << 62;
 // clang-format on
 
-int main()
-{
-    int n, m;
-    cin >> n >> m;
-    vector<int> s(m + 1, 0);
-    rep(i, n)
-    {
-        int l;
-        cin >> l;
-        int ans = 0;
-        rep(ii, l)
-        {
-            int x;
-            cin >> x;
-            if (s[x] == 0 && ans == 0)
-            {
-                cout << x << "\n";
-                s[x]++;
-                ans++;
-            }
-            else if (ii == l - 1 && ans == 0)
-            {
-                cout << 0 << "\n";
-                ans++;
-            }
-        }
+int main() {
+  int n, m;
+  cin >> n >> m;
+  vector<int> s(m + 1, 0);
+  rep(i, n) {
+    int l;
+    cin >> l;
+    int ans = 0;
+    rep(ii, l) {
+      int x;
+      cin >> x;
+      if (s[x] == 0 && ans == 0) {
+        cout << x << "\n";
+        s[x]++;
+        ans++;
+      } else if (ii == l - 1 && ans == 0) {
+        cout << 0 << "\n";
+        ans++;
+      }
     }
+  }
 }

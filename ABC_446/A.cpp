@@ -19,11 +19,10 @@ const int inf = 1 << 30;
 const ll INF = 1LL << 62;
 // clang-format on
 
-int main()
-{
-    string s;
-    cin >> s;
-    s[0] = s[0] - 'A' + 'a';
+int main() {
+  string s;
+  cin >> s;
+  s[0] = s[0] - 'A' + 'a';
 
-    cout << "Of" << s << endl;
+  cout << "Of" << s << endl;
 }

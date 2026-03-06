@@ -20,38 +20,33 @@ const int inf = 1 << 30;
 const ll INF = 1LL << 62;
 // clang-format on
 
-int main()
-{
-    ll t;
-    cin >> t;
-    while (t--)
-    {
-        ll n, d;
-        cin >> n >> d;
-        queue<ll> q;
-        ll ans = 0;
-        rep(i, n)
-        {
-            ll a;
-            cin >> a;
-            rep(ii, a) q.push(i + 1);
-        }
-        rep(i, n)
-        {
-            ll b;
-            cin >> b;
-            rep(ii, b) q.pop();
-
-            // while (q.front() == i + 1 - d)　俺の解答
-            while (!q.empty() && q.front() == i + 1 - d) // 正解コード
-                // 範囲外を参照しないようにするため、q.empty()の条件を追加する
-                q.pop();
-        }
-        while (!q.empty())
-        {
-            q.pop();
-            ans++;
-        }
-        cout << ans << endl;
+int main() {
+  ll t;
+  cin >> t;
+  while (t--) {
+    ll n, d;
+    cin >> n >> d;
+    queue<ll> q;
+    ll ans = 0;
+    rep(i, n) {
+      ll a;
+      cin >> a;
+      rep(ii, a) q.push(i + 1);
     }
+    rep(i, n) {
+      ll b;
+      cin >> b;
+      rep(ii, b) q.pop();
+
+      // while (q.front() == i + 1 - d)　俺の解答
+      while (!q.empty() && q.front() == i + 1 - d)  // 正解コード
+        // 範囲外を参照しないようにするため、q.empty()の条件を追加する
+        q.pop();
+    }
+    while (!q.empty()) {
+      q.pop();
+      ans++;
+    }
+    cout << ans << endl;
+  }
 }
